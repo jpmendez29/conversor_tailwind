@@ -76,7 +76,7 @@ function addMenuOptionsin(options) {
 function addMenuOptionsout(options) {
     const ul = document.createElement('ul');
     
-    ul.classList.add('py-2', 'text-sm', 'text-gray-700', 'dark:text-gray-200');
+    ul.classList.add('py-2', 'text-sm', 'text-gray-700', 'text-gray-200');
     ul.setAttribute('aria-labelledby' , '"dropdownClickButton"');
     
     options.forEach(option => {
@@ -86,7 +86,7 @@ function addMenuOptionsout(options) {
         a.href = option.url;
         a.innerText = option.label;
         
-        a.classList.add('block' ,'px-4' ,'py-2' ,'hover:bg-gray-100', 'dark:hover:bg-gray-600' ,'dark:hover:text-white','text-white' );
+        a.classList.add('block' ,'px-4' ,'py-2' ,'hover:bg-gray-100', 'hover:bg-gray-600' ,'hover:text-white','text-white' );
         a.setAttribute("data", option.value)
 
         link.appendChild(a)
@@ -173,12 +173,12 @@ async function Tablaconver() {
         const element = randomElements[index];
 
         if(index % 2 == 0){
-            tr.classList.add("bg-white", "border-b", "dark:bg-gray-900", "dark:border-gray-700")
+            tr.classList.add("border-b", "bg-[#7C4DFF]", "border-gray-700")
         }else{
-            tr.classList.add("border-b", "bg-gray-50", "dark:bg-gray-800", "dark:border-gray-700")
+            tr.classList.add("border-b", "bg-[#512DA8]", "border-gray-700")
         }
 
-        th.classList.add("px-6", "py-4", "font-medium", "text-gray-900", "whitespace-nowrap", "dark:text-white");
+        th.classList.add("px-6", "py-4", "font-medium", "text-gray-900", "whitespace-nowrap", "text-white");
         th.setAttribute("scope", "row");
         th.innerHTML = element;
             

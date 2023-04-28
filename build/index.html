@@ -11,8 +11,9 @@
     <title>Document</title>
 </head>
 
-<body class="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
-    <header class="bg-cyan-600 text-white sticky top-0 z-10">
+<body class="min-h-screen bg-[#212121] text-white">
+    <!-- solo visual -->
+    <header class="bg-[#512DA8] text-white sticky top-0 z-10">
         <section class="max-w-4xl mx-auto p-2 flex justify-between items-center">
             <h1 class="text-3xl font-medium">
                 <a href="#hero">💱GCE</a>
@@ -26,7 +27,7 @@
                 <nav class="hidden sm:block space-x-8 text-xl" aria-label="main">
                     <a href="#convertir" class="hover:opacity-90">Convertir</a>
                     <a href="#tabla_conversión" class="hover:opacity-90">Tabla de conversión</a>
-                    <a href="#histórico" class="hover:opacity-90">Histórico</a>
+                    <!-- <a href="#histórico" class="hover:opacity-90">Histórico</a> -->
                 </nav>
             </div>
         </section>
@@ -36,35 +37,35 @@
         
         <section id="convertir" class="grid grid-cols-2 grid-row-3 md:grid-cols-3 p-6 gap-2 mb-10 place-items-center">
             <div id="cantidad" class="mb-6 col-span-2 md:col-span-1">
-                <label for="cantidad_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Cantidad</label>
-                <input type="number" id="cantidad_input" class=" p-2.5 md:px-2.5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required value="100" >
+                <label for="cantidad_input" class="block mb-2 text-sm font-medium text-white ">Cantidad</label>
+                <input type="number" id="cantidad_input" class="p-2.5 md:px-2.5 border rounded-lg sm:text-md bg-[#757575] border-gray-600 placeholder-gray-400 text-white" required value="100" >
             </div>
 
             <div id="moneda_entrada" class="mb-6">
-                <label for="dropdown-button"class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">De</label>
+                <label for="dropdown-button"class="block mb-2 text-sm font-medium text-gray-900 text-white">De</label>
                     <div>
-                        <button id="dropdownClickButtonin" data-dropdown-toggle="dropdownClick" data-dropdown-trigger="click" class="text-white bg-blue-700  font-medium text-sm px-4 py-2.5 text-center inline-flex items-center border border-gray-300 dark:border-gray-700 dark:text-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="button">moneda <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <button id="dropdownClickButtonin" data-dropdown-toggle="dropdownClick" data-dropdown-trigger="click" class="bg-[#7C4DFF]  font-medium text-sm px-4 py-2.5 text-center inline-flex items-center text-white rounded-lg focus:outline-none hover:bg-[#512DA8]" type="button">moneda <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                         <!-- Dropdown menu -->
-                        <div id="dropdownClickin" class="z-50 hidden absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 max-h-[200px] overflow-auto"></div> 
+                        <div id="dropdownClickin" class="z-50 hidden absolute divide-y divide-gray-100 rounded-lg shadow w-60 bg-gray-700 max-h-[200px] overflow-auto"></div> 
                     </div>
             </div>
 
             <div id="moneda_salida" class="mb-6 ">
-                <label for="dropdown-button" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">A</label>
+                <label for="dropdown-button" class="block mb-2 text-sm font-medium text-white">A</label>
                 <div>
-                    <button id="dropdownClickButtonout" data-dropdown-toggle="dropdownClick" data-dropdown-trigger="click" class="text-white bg-blue-700  font-medium text-sm px-4 py-2.5 text-center inline-flex items-center border border-gray-300 dark:border-gray-700 dark:text-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="button">moneda <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <button id="dropdownClickButtonout" data-dropdown-toggle="dropdownClick" data-dropdown-trigger="click" class="bg-[#7C4DFF]  font-medium text-sm px-4 py-2.5 text-center inline-flex items-center text-white rounded-lg focus:outline-none hover:bg-[#512DA8]" type="button">moneda <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownClickout" class="z-50 hidden absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 max-h-[200px] overflow-auto"></div> 
+                    <div id="dropdownClickout" class="z-50 hidden absolute divide-y divide-gray-100 rounded-lg shadow w-60 bg-gray-700 max-h-[200px] overflow-auto"></div> 
                 </div>
             </div>
 
             <div id="conversion" class="mb-6 col-span-2 md:col-span-1">
-                <label for="cantidad_out" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Son:</label>
-                <input type="string" id="cantidad_out" class=" p-2.5 md:px-2.5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled>
+                <label for="cantidad_out" class="block mb-2 text-sm font-medium text-white ">Son:</label>
+                <input type="string" id="cantidad_out" class="p-2.5 md:px-2.5 border rounded-lg sm:text-md bg-[#757575] border-gray-600 placeholder-gray-400 text-white" disabled>
             </div>
 
             <div id="boton_convertir" class="mb-6 mt-5 md:col-start-3 md:col-span-1 col-span-2">
-                <button type="button" id="botconvertir" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center">Convertir
+                <button type="button" id="botconvertir" class="text-white focus:ring-4 rounded-lg bg-[#7C4DFF] hover:bg-[#512DA8] focus:outline-none inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center">Convertir
                     <svg fill="none" stroke="currentColor" class="ml-2 -mr-1 w-5 h-5" stroke-width="1.5"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -76,10 +77,10 @@
 
         </section>
 
-        <section id="Tabla_de_conversiones" class="relative overflow-x-auto shadow-md sm:rounded-lg p-6 gap-2 mb-10">
-            <label for="TC" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-center">Tabla de Tabla de conversiones</label>
-            <table id="TC" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <section id="Tabla_de_conversiones" class="relative overflow-x-auto shadow-md sm:rounded-lg p-6 gap-2 mb-10 shadow-stone-900">
+            <label for="TC" class="block mb-2 text-xl font-medium text-white text-center">Tabla de conversiones</label>
+            <table id="TC" class="w-full text-sm text-left text-gray-400">
+                <thead  class="text-xs uppercase bg-[#512DA8] text-white">
                     <tr id="thead">
                         <th scope="col" class="px-6 py-3">
                             moneda
@@ -93,7 +94,7 @@
         </section>
         
 
-        <section id="Tabla_de_historico" class="relative overflow-x-auto shadow-md sm:rounded-lg p-6 gap-2 mb-10">
+        <!-- <section id="Tabla_de_historico" class="relative overflow-x-auto shadow-md sm:rounded-lg p-6 gap-2 mb-10">
             <label for="TH" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-center">Tabla de Tabla de historico</label>
             <table id="TH" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -186,7 +187,7 @@
                     </tr>
                 </tbody>
             </table>
-        </section>
+        </section> -->
 
         
 
