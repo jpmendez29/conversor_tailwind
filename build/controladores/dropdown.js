@@ -1,4 +1,4 @@
-import {symbols, convert } from './api.js';
+import {symbols, convert, latest } from './api.js';
 
 const dropdownClickButtonin = document.getElementById('dropdownClickButtonin');
 const dropdownClickMenuin = document.getElementById('dropdownClickin');
@@ -14,13 +14,14 @@ const thead = document.getElementById("thead");
 const tb = document.getElementById("tbody");
 
 var monin, monout;
-
 const options = [];
 
 
 let taskStorage = JSON.parse(
     window.localStorage.getItem("taskStorage") || "[]"
 );
+
+// se revisa el locale storage para saber obtener los datos de las monedas y si no hay se genera un nuevo llamado a la api
 
 if (taskStorage.length === 0){
     var symbolsResult = await symbols();
@@ -32,8 +33,6 @@ if (taskStorage.length === 0){
             options.push({label:  key.toString()+ " - "+value.toString(), url: '#', value: key })
         }
     }
-
-
 }else{
     for (var key in taskStorage) {
         if (taskStorage.hasOwnProperty(key)) {
@@ -44,10 +43,11 @@ if (taskStorage.length === 0){
 }
 
 
-
+// se llaman las funciones para añadir los menus a los botones 
 addMenuOptionsin(options);
 addMenuOptionsout(options);
 
+// se genera el menu de los botones
 
 function addMenuOptionsin(options) {
     const ul = document.createElement('ul');
@@ -72,6 +72,7 @@ function addMenuOptionsin(options) {
     });
 }
 
+
 function addMenuOptionsout(options) {
     const ul = document.createElement('ul');
     
@@ -95,6 +96,8 @@ function addMenuOptionsout(options) {
     });
 }
 
+// funcion para hacer el llamado de conversion a la api
+
 async function con(){
     const val = document.getElementById("cantidad_input").value
     const result = await convert(monout, monin, val);
@@ -102,6 +105,8 @@ async function con(){
     console.log(result)
 }
 
+
+// se añaden eventos a los botones
 
 dropdownClickButtonin.addEventListener('click', () => {
     dropdownClickMenuin.classList.toggle('hidden');
@@ -114,7 +119,7 @@ dropdownClickButtonout.addEventListener('click', () => {
 ConvertButton.addEventListener('click', () => con());
 
 
-
+// se da un valor a la moneda seleccionada en la lista
 document.querySelectorAll('#dropdownClickin a').forEach(a => {
     a.addEventListener('click', event => {
         event.preventDefault();
@@ -122,7 +127,6 @@ document.querySelectorAll('#dropdownClickin a').forEach(a => {
         dropdownClickButtonin.innerHTML =`${a.innerHTML}`
         dropdownClickMenuin.classList.toggle('hidden');
         monin = value;
-        console.log(`El valor seleccionado es: ${monin}`);
     });
 });
 
@@ -133,16 +137,17 @@ document.querySelectorAll('#dropdownClickout a').forEach(a => {
         dropdownClickButtonout.innerHTML =`${a.innerHTML}`
         dropdownClickMenuout.classList.toggle('hidden');
         monout = value;
-        console.log(`El valor seleccionado es: ${monout}`);
     });
 });
 
 
+// se hace llamado a la funcion que genera la tabla de cconversion
 await Tablaconver();
 
 async function Tablaconver() {
     const randomElements = [];
 
+    // se eligen 4 monedas aleatorios para comparar y se añaden a las columnas
     while (randomElements.length < 4) {
         var ind = Math.floor(Math.random() * options.length);
         var randsym = options[ind].value;
@@ -161,12 +166,7 @@ async function Tablaconver() {
         }
     }
 
-
-
-    
-    
-    
-
+    // se añaden los mismos elementos como filas y se alterna el color de la tabla 
     for (let index = 0; index < randomElements.length; index++) {
         const tr  = document.createElement("tr");
         const th = document.createElement("th");
@@ -184,15 +184,23 @@ async function Tablaconver() {
             
         
         tr.appendChild(th);
+        
+        tb.appendChild(tr); // momentaneo
 
-        for (let index = 0; index < 4; index++) {
+        var s =  randomElements.join(",")
+        var rat  = await latest(s, randomElements[index]);
+        
+        // se hace hace el llamado a la api para obtener las conversiones de cada moneda y se añade cada valor a su fila
+
+        /* for (let index = 0; index < 4; index++) {
             const td = document.createElement("td");
             td.classList.add("px-6", "py-3");
-            td.innerHTML = "hola";
+            td.innerHTML = rat[index]
             tr.appendChild(td);
-        }
-        tb.appendChild(tr);
-        }
+            tb.appendChild(tr); // real
+        } */
+        
+    }
     
 }
 
