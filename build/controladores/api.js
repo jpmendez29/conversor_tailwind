@@ -8,12 +8,14 @@ var requestOptions = {
 };
 
 
-export function convert(to,from,amount){
-    fetch("https://api.apilayer.com/fixer/convert?to=",to,"&from=",from,"&amount=",amount , requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-    return results;
+export async function convert(to, from, amount) {
+    try {
+        const response = await fetch(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, requestOptions);
+        const result = await response.json();
+        return result.result;
+    } catch (error) {
+        console.log('error', error);
+    }
 }
 
 
