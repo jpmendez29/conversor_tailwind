@@ -10,9 +10,13 @@ const ConvertButton = document.getElementById('botconvertir');
 
 const Converciontext = document.getElementById("cantidad_out");
 
+const thead = document.getElementById("thead");
+const tb = document.getElementById("tbody");
+
 var monin, monout;
 
 const options = [];
+
 
 let taskStorage = JSON.parse(
     window.localStorage.getItem("taskStorage") || "[]"
@@ -28,6 +32,7 @@ if (taskStorage.length === 0){
             options.push({label:  key.toString()+ " - "+value.toString(), url: '#', value: key })
         }
     }
+
 
 }else{
     for (var key in taskStorage) {
@@ -133,4 +138,61 @@ document.querySelectorAll('#dropdownClickout a').forEach(a => {
 });
 
 
+await Tablaconver();
+
+async function Tablaconver() {
+    const randomElements = [];
+
+    while (randomElements.length < 4) {
+        var ind = Math.floor(Math.random() * options.length);
+        var randsym = options[ind].value;
+        if (randomElements.indexOf(randsym) === -1) {
+
+            randomElements.push(randsym);
+            
+            const th = document.createElement("th");
+
+            th.classList.add("px-6", "py-3");
+            th.setAttribute("scope", "col");
+
+            th.innerHTML = randsym;
+            thead.appendChild(th);
+            
+        }
+    }
+
+
+
+    
+    
+    
+
+    for (let index = 0; index < randomElements.length; index++) {
+        const tr  = document.createElement("tr");
+        const th = document.createElement("th");
+        const element = randomElements[index];
+
+        if(index % 2 == 0){
+            tr.classList.add("bg-white", "border-b", "dark:bg-gray-900", "dark:border-gray-700")
+        }else{
+            tr.classList.add("border-b", "bg-gray-50", "dark:bg-gray-800", "dark:border-gray-700")
+        }
+
+        th.classList.add("px-6", "py-4", "font-medium", "text-gray-900", "whitespace-nowrap", "dark:text-white");
+        th.setAttribute("scope", "row");
+        th.innerHTML = element;
+            
+        
+        tr.appendChild(th);
+
+        for (let index = 0; index < 4; index++) {
+            const td = document.createElement("td");
+            td.classList.add("px-6", "py-3");
+            td.innerHTML = "hola";
+            tr.appendChild(td);
+        }
+        tb.appendChild(tr);
+        }
+    
+}
 

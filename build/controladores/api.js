@@ -29,9 +29,12 @@ export async function symbols() {
     }
 }
 
-export function ratio(symbols,base){
-    fetch("https://api.apilayer.com/fixer/latest?symbols=${symbols}&base=${base}", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+export async function latest(symbols, base) {
+    try {
+        const response = await fetch(`https://api.apilayer.com/fixer/latest?symbols=${symbols}&base=${base}`, requestOptions);
+        const result = await response.json();
+        return result.rates;
+    } catch (error) {
+        console.log('error', error);
+    }
 }
