@@ -184,22 +184,16 @@ async function Tablaconver() {
             
         
         tr.appendChild(th);
-        
-        tb.appendChild(tr); // momentaneo
 
         var s =  randomElements.join(",")
         var rat  = await latest(s, randomElements[index]);
-        
-        // se hace hace el llamado a la api para obtener las conversiones de cada moneda y se añade cada valor a su fila
-
-        /* for (let index = 0; index < 4; index++) {
+        for (let key in rat){
             const td = document.createElement("td");
-            td.classList.add("px-6", "py-3");
-            td.innerHTML = rat[index]
+            td.classList.add("px-6", "py-3", "text-white");
+            td.innerHTML = rat[key];
             tr.appendChild(td);
-            tb.appendChild(tr); // real
-        } */
-        
+            tb.appendChild(tr);
+        }        
     }
     
 }
